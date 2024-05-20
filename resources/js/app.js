@@ -7,12 +7,14 @@ import { createPinia } from 'pinia'
 import router from './router'
 import DefaultLayout from '@/layouts/DefaultLayouts.vue'
 import NavbarComponent from '@/components/navbar/NavbarComponent.vue'
+import NavItem from '@/components/navbar/NavItem.vue'
 import App from '@/components/App.vue'
 // ? Initial configuration & Global Registration Component
 const app = createApp()
 app.component('App', App)
     .component('DefaultLayout', DefaultLayout)
     .component('NavbarComponent', NavbarComponent)
+    .component('NavItem', NavItem)
     .use(router)
     .use(createPinia())
     .mount('#app')
