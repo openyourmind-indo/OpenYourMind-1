@@ -7,7 +7,8 @@ export default {
     ],
     theme: {
         fontFamily: {
-            'body': ["Inter", "sans-serif"],
+            'main': ["Poppins", "sans-serif"],
+            'secondary': ["Manrope", "sans-serif"]
         },
         extend: {
             colors: {
