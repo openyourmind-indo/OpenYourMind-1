@@ -16,8 +16,8 @@ Route::get('/services', function () {
 });
 
 Route::get('/services/{serviceID}',function(){
-
-})
+    return view('login');
+});
 
 Route::get('/login', function () {
     return view('login');
