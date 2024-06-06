@@ -9,7 +9,20 @@ export default {
         fontFamily: {
             'body': ["Inter", "sans-serif"],
         },
-        extend: {},
+        extend: {
+            colors: {
+                'primary-main': '#CC7655',
+                'primary-title': '#1A1A1A',
+                'primary-text-brown': '#EC744A',
+                'primary-bg-brown': '#D17957',
+                'primary-bg-brown-gradient': '#E39374',
+                'secondary-green': '#007D6E',
+                // ? pallete for login page
+                'secondary-green-login': '#43A478',
+                'secondary-green-login-button': '#59B17B',
+                'secondary-login-input': '#ECECEC',
+            },
+        },
     },
     plugins: [],
 }
