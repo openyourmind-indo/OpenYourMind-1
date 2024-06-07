@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from 'views/HomeView.vue'
+import HomeView from 'views/Home/HomeView.vue'
 export const routes = [
     {
         path: '/',
@@ -12,7 +12,7 @@ export const routes = [
     {
         path: '/about',
         name: 'About',
-        component: () => import('views/AboutView.vue'),
+        component: () => import('views/About/AboutView.vue'),
         meta: {
             title: 'About Page'
         }
@@ -20,7 +20,7 @@ export const routes = [
     {
         path: '/services',
         name: 'services',
-        component: () => import('views/ServicesView.vue'),
+        component: () => import('views/Services/ServicesView.vue'),
         meta: {
             title: 'Program Page'
         }
@@ -28,7 +28,7 @@ export const routes = [
     {
         path: '/articel',
         name: 'Articel',
-        component: () => import('views/ArtikelView.vue'),
+        component: () => import('views/Artikel/ArtikelView.vue'),
         meta: {
             title: 'Artikel Page'
         }
