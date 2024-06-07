@@ -1,6 +1,8 @@
 <script setup>
-import { useStoreData } from '../store/StoreApi.js'
+import { useStoreData } from '../../store/StoreApi.js'
 const store = useStoreData()
+const h = () => console.error('hi, ij');
+const f = () => console.table('hi clg');
 </script>
 <template>
     <DefaultLayout>
@@ -10,5 +12,7 @@ const store = useStoreData()
                 This is Getters: {{ item }}
             </li>
         </ul>
+        <Button @actions="h" title="ini clt" class="text-blue-400" />
+        <Button @actions="f" title="ini clg" class="text-blue-400" />
     </DefaultLayout>
 </template>
