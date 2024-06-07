@@ -3,7 +3,7 @@ import HomeView from 'views/HomeView.vue'
 export const routes = [
     {
         path: '/',
-        name: 'Beranda',
+        name: 'Home',
         component: HomeView,
         meta: {
             title: 'Home Page'
@@ -11,43 +11,27 @@ export const routes = [
     },
     {
         path: '/about',
-        name: 'Tentang kami',
+        name: 'About',
         component: () => import('views/AboutView.vue'),
         meta: {
             title: 'About Page'
         }
     },
     {
-        path: '/program',
-        name: 'Program',
-        component: () => import('views/ProgramView.vue'),
+        path: '/services',
+        name: 'services',
+        component: () => import('views/ServicesView.vue'),
         meta: {
             title: 'Program Page'
         }
     },
     {
-        path: '/artikel',
-        name: 'Artikel',
+        path: '/articel',
+        name: 'Articel',
         component: () => import('views/ArtikelView.vue'),
         meta: {
             title: 'Artikel Page'
         }
-    },
-    {
-        path: '/testimoni',
-        name: 'Testimoni',
-        component: () => import('views/TestimoniView.vue'),
-        meta: {
-            title: 'Testimoni Page'
-        }
-    },
-    {
-        path: '/kontak',
-        name: 'Kontak',
-        // component: HomeView,
-        // meta: {
-        //     title: 'Home Page'
-        // }
     },
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },
