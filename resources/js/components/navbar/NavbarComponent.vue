@@ -1,8 +1,8 @@
 <!-- ? Sample Navbar Components -->
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import BrandLogo from 'public/Logo.svg'
-const hamburger = ref(true)
+const hamburger = ref(true);
 </script>
 <template>
     <!-- <ButtonHamburger @hamburgerToggle="hamburger = !hamburger" /> -->
@@ -10,24 +10,22 @@ const hamburger = ref(true)
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto ">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img :src="BrandLogo" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-xl font-bold whitespace-nowrap text-primary-title font-secondary">Open
-                    Your
-                    Mind</span>
+                <span class="self-center text-xl font-bold whitespace-nowrap text-primary-title font-secondary">
+                    Open Your Mind
+                </span>
             </a>
             <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
                 <Button />
-                <button data-collapse-toggle="navbar-cta" type="button"
-                    class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-                    aria-controls="navbar-cta" aria-expanded="false">
+                <button @click="hamburger = !hamburger" data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center justify-center text-primary-title " aria-controls="navbar-cta"
+                    aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
+                    <IconVue v-if="hamburger" icon="charm:menu-hamburger" class="block size-5 md:hidden" />
+                    <IconVue v-else icon="line-md:close" class="size-5" />
                 </button>
             </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+            <div :class="{ ' items-center justify-between hidden w-full md:flex md:w-auto md:order-1': hamburger, 'items-center justify-between block z-50 absolute top-20 left-0 w-full md:flex md:w-auto md:order-1': !hamburger }"
+                class="" id="navbar-cta">
                 <NavItem />
             </div>
         </div>
