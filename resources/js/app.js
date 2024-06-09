@@ -3,6 +3,7 @@ import '../css/app.css';
 // ? Define vue, pinia store
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { Icon } from '@iconify/vue'
 // ? import Layouts & Components
 import router from './router'
 import DefaultLayout from '@/layouts/DefaultLayouts.vue'
@@ -19,6 +20,7 @@ app.component('App', App)
     .component('NavItem', NavItem)
     .component('ButtonHamburger', ButtonHamburger)
     .component('Button', Button)
+    .component('IconVue', Icon)
     .use(router)
     .use(createPinia())
     .mount('#app')
