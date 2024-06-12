@@ -12,6 +12,7 @@ export default {
         },
         extend: {
             colors: {
+                'hero-main': '#FCF8F4',
                 'primary-main': '#CC7655',
                 'primary-title': '#1A1A1A',
                 'primary-text-brown': '#EC744A',

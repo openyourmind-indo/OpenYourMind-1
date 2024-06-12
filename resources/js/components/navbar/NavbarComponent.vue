@@ -6,7 +6,7 @@ const hamburger = ref(true);
 </script>
 <template>
     <!-- <ButtonHamburger @hamburgerToggle="hamburger = !hamburger" /> -->
-    <nav class="bg-white border-gray-20">
+    <nav class="bg-transparent">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto ">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img :src="BrandLogo" class="h-8" alt="Flowbite Logo" />
