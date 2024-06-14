@@ -1,7 +1,24 @@
 <script setup>
 import { useStoreData } from '../../store/StoreApi.js'
+import { ref, onMounted } from 'vue'
 const store = useStoreData()
-
+const data = ref([
+    {
+        id: 1,
+        title: 'Holistic approach',
+        description: 'Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris.'
+    },
+    {
+        id: 2,
+        title: 'Expertise Team',
+        description: 'Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris.'
+    },
+    {
+        id: 3,
+        title: 'Accessibility',
+        description: 'Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris.'
+    },
+])
 </script>
 <template>
     <DefaultLayout>
@@ -20,12 +37,14 @@ const store = useStoreData()
                     <Button
                         class="px-2 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-secondary-green md:rounded-full hover:shadow-lg"
                         title="Get Started" />
-
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
                     <img src="../../../public/hero.svg" alt="mockup">
                 </div>
             </div>
+        </section>
+        <section class="flex flex-col items-center justify-center md:flex-row">
+            <CardsDefault :data="data" />
         </section>
     </DefaultLayout>
 </template>
