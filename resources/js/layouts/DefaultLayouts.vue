@@ -9,7 +9,7 @@
         <slot></slot>
     </main>
     <footer>
-
+        <FooterComponent />
     </footer>
 </template>
 <!-- lg:flex-row lg:justify-between flex flex-col -->
