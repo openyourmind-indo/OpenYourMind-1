@@ -3,19 +3,6 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 export const useStoreBrand = defineStore('Brand', () => {
     // ? state
-    const BrandsData = ref([
-        {
-            id: 1,
-        },
-        {
-            id: 2,
-        },
-        {
-            id: 3,
-        },
-        {
-            id: 4,
-        },
-    ])
+    const BrandsData = ref(Array.from({ length: 4 }, () => 'mdi-light:home'))
     return { BrandsData }
 })
