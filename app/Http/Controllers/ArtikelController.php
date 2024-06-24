@@ -1,41 +1,39 @@
 <?php
+// app/Http/Controllers/ArticleController.php
 
 namespace App\Http\Controllers;
+
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-    public function index(){
-        $artikel = Artikel::all();
-        return view('Artikel.index', compact('artikel'));
+    public function index()
+    {
+        return Artikel::all();
     }
 
-    public function create(){
-        return view('Artikel.add');
-    }   
-
-    public function store(Request $request){
-        $artikel = Artikel::create($request->all());
-        $artikel->save();
-        return redirect('/artikel');
-
+    public function store(Request $request)
+    {
+        $article = Artikel::create($request->all());
+        return response()->json($article, 201);
     }
 
-    public function edit($id){
-        $artikel = Artikel::where('id',$id)->get();
-        return view('Artikel.edit',compact('artikel'));
+    public function show($id)
+    {
+        return Artikel::findOrFail($id);
     }
 
-    public function update(Request $request){
-        $artikel = Artikel::find($request);
-        $artikel->update($request->all());
-        return redirect('/artikel');
+    public function update(Request $request, $id)
+    {
+        $article = Artikel::findOrFail($id);
+        $article->update($request->all());
+        return response()->json($article, 200);
     }
 
-    public function destroy($id){
-        $artikel = Artikel::findOrFail($id);
-        $artikel->delete();
-        return redirect('/artikel');
+    public function destroy($id)
+    {
+        Artikel::destroy($id);
+        return response()->json(null, 204);
     }
 }

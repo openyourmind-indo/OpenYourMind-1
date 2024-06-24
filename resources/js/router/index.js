@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from 'views/HomeView.vue'
+import HomeView from '../views/HomeView.vue'
 export const routes = [
     {
         path: '/',
@@ -12,7 +12,7 @@ export const routes = [
     {
         path: '/about',
         name: 'Tentang kami',
-        component: () => import('views/AboutView.vue'),
+        component: () => import('../views/AboutView.vue'),
         meta: {
             title: 'About Page'
         }
@@ -20,7 +20,7 @@ export const routes = [
     {
         path: '/program',
         name: 'Program',
-        component: () => import('views/ProgramView.vue'),
+        component: () => import('../views/ProgramView.vue'),
         meta: {
             title: 'Program Page'
         }
@@ -28,7 +28,7 @@ export const routes = [
     {
         path: '/artikel',
         name: 'Artikel',
-        component: () => import('views/ArtikelView.vue'),
+        component: () => import('../views/ArtikelView.vue'),
         meta: {
             title: 'Artikel Page'
         }
@@ -36,7 +36,7 @@ export const routes = [
     {
         path: '/testimoni',
         name: 'Testimoni',
-        component: () => import('views/TestimoniView.vue'),
+        component: () => import('../views/TestimoniView.vue'),
         meta: {
             title: 'Testimoni Page'
         }
@@ -44,10 +44,10 @@ export const routes = [
     {
         path: '/kontak',
         name: 'Kontak',
-        // component: HomeView,
-        // meta: {
-        //     title: 'Home Page'
-        // }
+        component: HomeView,
+        meta: {
+            title: 'Home Page'
+        }
     },
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },

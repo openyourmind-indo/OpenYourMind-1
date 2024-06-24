@@ -1,3 +1,12 @@
 <!-- ? Root Apps || Don't Delete -->
-<script></script>
-<template></template>
+<template>
+    <div>
+        <router-view></router-view>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'App',
+};
+</script>

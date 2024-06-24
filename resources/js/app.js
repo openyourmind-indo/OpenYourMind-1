@@ -12,13 +12,28 @@ import App from '@/components/App.vue'
 import ButtonHamburger from '@/components/base/ButtonHamburger.vue';
 import Button from '@/components/base/ButtonComponent.vue';
 // ? Initial configuration & Global Registration Component
-const app = createApp()
-app.component('App', App)
-    .component('DefaultLayout', DefaultLayout)
-    .component('NavbarComponent', NavbarComponent)
-    .component('NavItem', NavItem)
-    .component('ButtonHamburger', ButtonHamburger)
-    .component('Button', Button)
-    .use(router)
-    .use(createPinia())
-    .mount('#app')
+// const app = createApp()
+// app.component('App', App)
+//     .component('DefaultLayout', DefaultLayout)
+//     .component('NavbarComponent', NavbarComponent)
+//     .component('NavItem', NavItem)
+//     .component('ButtonHamburger', ButtonHamburger)
+//     .component('Button', Button)
+//     .use(router)
+//     .use(createPinia())
+//     .mount('#app')
+
+createApp(App)    
+.component('DefaultLayout', DefaultLayout)
+.component('NavbarComponent', NavbarComponent)
+.component('NavItem', NavItem)
+.component('ButtonHamburger', ButtonHamburger)
+.component('Button', Button)
+.use(router)
+.use(createPinia())
+.mount('#app')
+
+
+
+    
+    

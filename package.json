@@ -3,11 +3,13 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "watch": "concurrently --kill-others \"npm run build\" \"npm run dev\""
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
+        "concurrently": "^8.2.2",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.38",
         "tailwindcss": "^3.4.3",
@@ -16,6 +18,7 @@
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
         "pinia": "^2.1.7",
-        "vue-router": "^4.3.2"
+        "vue": "^3.4.30",
+        "vue-router": "^4.0.13"
     }
 }

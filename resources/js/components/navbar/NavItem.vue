@@ -1,5 +1,5 @@
 <script setup>
-import { routes } from '@/router/index'
+import { routes } from '../../router/index.js'
 console.log(routes);
 import { RouterLink, useRoute } from 'vue-router';
 const CurrentPage = useRoute().name
