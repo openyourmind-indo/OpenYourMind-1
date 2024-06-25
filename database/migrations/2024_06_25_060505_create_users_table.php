@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
+            $table->string('role',50);
             $table->string('email', 50);
             $table->string('password', 20);
             $table->string('phone_number', 20);
             $table->dateTime('birth_date');
-            $table->string('profile_image', 255);
             $table->timestamps();
+        
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -29,9 +30,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
-     
-   });
-
+        });
     }
 
     /**
