@@ -14,6 +14,8 @@ import ButtonHamburger from "@/components/base/ButtonHamburger.vue";
 import Button from "@/components/base/ButtonComponent.vue";
 import CardsDefault from "@/components/card/Cards.vue";
 import FooterComponent from "@/components/footer/FooterComponent.vue";
+import Brands from "@/components/brand/Brand.vue";
+import TestimoniCard from './components/testimoni/TestimoniCard.vue';
 
 // ? Initial configuration & Global Registration Component
 const app = createApp();
@@ -26,6 +28,8 @@ app.component("App", App)
     .component("CardsDefault", CardsDefault)
     .component("IconVue", Icon)
     .component("FooterComponent", FooterComponent)
+    .component("Brands", Brands)
+    .component("TestimoniCard", TestimoniCard)
     .use(router)
     .use(createPinia())
     .mount("#app")

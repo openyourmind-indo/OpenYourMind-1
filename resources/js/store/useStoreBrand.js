@@ -4,5 +4,23 @@ import { ref } from 'vue'
 export const useStoreBrand = defineStore('Brand', () => {
     // ? state
     const BrandsData = ref(Array.from({ length: 4 }, () => 'mdi-light:home'))
-    return { BrandsData }
+    const TestimoniData = ref([
+        {
+            title: 'Experienced',
+            year: '8 +'
+        },
+        {
+            title: 'Teams',
+            year: '122 +'
+        },
+        {
+            title: 'Clients',
+            year: '563 +'
+        },
+        {
+            title: 'Project Done',
+            year: '232 +'
+        },
+    ])
+    return { TestimoniData, BrandsData }
 })

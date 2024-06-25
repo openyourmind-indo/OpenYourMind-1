@@ -9,6 +9,8 @@
 
 @layer components {
     .container {
-        @apply max-w-5xl py-8 mx-auto;
+        @apply max-w-5xl mx-auto;
     }
+
+    /* py-8 */
 }
