@@ -1,7 +1,9 @@
 <script setup>
 import { useStoreBrand } from '../../store/useStoreBrand';
+import { useStoreCard } from '../../store/StoreCard';
 import { storeToRefs } from 'pinia';
-const { TestimoniData } = storeToRefs(useStoreBrand())
+const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
+const { CardsData } = storeToRefs(useStoreCard())
 </script>
 <template>
     <DefaultLayout>
@@ -32,5 +34,8 @@ const { TestimoniData } = storeToRefs(useStoreBrand())
             </div>
         </section>
         <TestimoniCard :data="TestimoniData"></TestimoniCard>
+        <CardsDefault title="Why?" description="Why Our Mental Health Consultants are the Best Choice">
+        </CardsDefault>
+        <Cards :data="CardsData" />
     </DefaultLayout>
 </template>
