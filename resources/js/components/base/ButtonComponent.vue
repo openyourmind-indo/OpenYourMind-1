@@ -3,7 +3,7 @@ defineEmits(['actions'])
 defineProps({
     title: {
         type: String,
-        required: true,
+        required: false,
         default: 'Contact Us'
     }, class: {
         type: String,

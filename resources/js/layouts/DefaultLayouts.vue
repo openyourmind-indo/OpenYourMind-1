@@ -5,7 +5,7 @@
     <header class="container">
         <NavbarComponent />
     </header>
-    <main class="container py-2 ">
+    <main class="py-2 ">
         <slot></slot>
     </main>
     <footer>
