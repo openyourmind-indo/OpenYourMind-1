@@ -2,11 +2,13 @@
 import { useStoreBrand } from '../../store/useStoreBrand';
 import { useStoreCard } from '../../store/StoreCard';
 import { storeToRefs } from 'pinia';
+import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
 const { CardsData } = storeToRefs(useStoreCard())
 </script>
 <template>
     <DefaultLayout>
+        <!-- Hero Section -->
         <section class="container">
             <div class="max-w-screen-xl px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <div class="mr-auto place-self-center lg:col-span-7">
@@ -20,7 +22,7 @@ const { CardsData } = storeToRefs(useStoreCard())
                         non mauris. Ultrices aliquet at quam.
                     </p>
                     <Button
-                        class="px-2 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-secondary-green md:rounded-full hover:shadow-lg"
+                        class="px-6 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-secondary-green md:rounded-full hover:shadow-lg"
                         title="Get Started" />
                     <ul class="flex flex-row items-start justify-start py-8">
                         <li v-for="item in BrandsData" :key="item">
@@ -33,9 +35,20 @@ const { CardsData } = storeToRefs(useStoreCard())
                 </div>
             </div>
         </section>
+        <!-- Testimoni -->
         <TestimoniCard :data="TestimoniData"></TestimoniCard>
+        <!-- Cards Default -->
         <CardsDefault title="Why?" description="Why Our Mental Health Consultants are the Best Choice">
+            <Cards :data="CardsData" />
         </CardsDefault>
-        <Cards :data="CardsData" />
+        <!-- About Us -->
+        <section class="container py-8">
+            <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
+                <HeroImage :data="hero" />
+                <HeroText
+                    description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
+                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
+            </div>
+        </section>
     </DefaultLayout>
 </template>

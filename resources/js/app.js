@@ -17,6 +17,9 @@ import Brands from "@/components/brand/Brand.vue";
 import TestimoniCard from '@/components/testimoni/TestimoniCard.vue';
 import CardsDefault from './components/card/CardsDefault.vue';
 import Cards from './components/card/Cards.vue';
+import HeroImage from './components/hero/HeroImage.vue';
+import HeroText from './components/hero/HeroText.vue';
+
 // ? Initial configuration & Global Registration Component
 const app = createApp();
 app.component("App", App)
@@ -31,6 +34,8 @@ app.component("App", App)
     .component("Brands", Brands)
     .component("TestimoniCard", TestimoniCard)
     .component("CardsDefault", CardsDefault)
+    .component("HeroImage", HeroImage)
+    .component("HeroText", HeroText)
     .use(router)
     .use(createPinia())
     .mount("#app")
