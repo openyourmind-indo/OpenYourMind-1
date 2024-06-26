@@ -1,11 +1,35 @@
 <template>
-    <div>
-        <router-view></router-view>
+    <div id="app">
+        <router-view v-if="loaded"></router-view>
     </div>
 </template>
 
 <script>
 export default {
     name: 'App',
+    data() {
+        return {
+            loaded: false,
+            user: null
+        };
+    },
+    async created() {
+        try {
+            const response = await fetch('/api/user', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            if (response.ok) {
+                this.user = await response.json();
+                localStorage.setItem('user', JSON.stringify(this.user));
+            }
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        } finally {
+            this.loaded = true;
+        }
+    }
 };
 </script>

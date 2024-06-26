@@ -6,6 +6,7 @@ export const routes = [
         name: 'Beranda',
         component: HomeView,
         meta: {
+            requiresAuth: true,
             title: 'Home Page'
         }
     },
@@ -48,7 +49,29 @@ export const routes = [
         meta: {
             title: 'Home Page'
         }
+    },  {
+        path: '/login',
+        name: 'login',
+        component: () => import('../views/LoginView.vue'),
+        meta: {
+            title: 'Login Page'
+        }
     },
+    {
+        path: '/register',
+        name: 'register',
+        component: () => import('../views/RegisterView.vue'),
+        meta: {
+            title: 'Register Page'
+        }
+    }, {
+        path: '/:pathMatch(.*)*',
+        name: 'notfound',
+        component:  () => import('../views/ErrorView.vue'),
+        meta: {
+            title: 'error Page'
+        }
+    }
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },
 ]
@@ -56,5 +79,16 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes
 })
+
+router.beforeEach((to, from, next) => {
+    const token = localStorage.getItem('token');
+
+    if (to.matched.some(record => record.meta.requiresAuth) && !token) {
+        next({ name: 'login' });
+    } else {
+        next();
+    }
+});
+
 
 export default router
