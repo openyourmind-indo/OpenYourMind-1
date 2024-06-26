@@ -8,7 +8,13 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        vue()
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => tag.includes('swiper')
+                }
+            }
+        })
     ],
     resolve: {
         alias: {
