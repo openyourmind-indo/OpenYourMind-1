@@ -37,7 +37,7 @@ const { CardsData } = storeToRefs(useStoreCard())
         </section>
         <!-- Testimoni -->
         <TestimoniCard :data="TestimoniData"></TestimoniCard>
-        <!-- Cards Default -->
+        <!-- Why? -->
         <CardsDefault title="Why?" description="Why Our Mental Health Consultants are the Best Choice">
             <Cards :data="CardsData" />
         </CardsDefault>
@@ -50,5 +50,20 @@ const { CardsData } = storeToRefs(useStoreCard())
                     header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
             </div>
         </section>
+        <!-- Services -->
+        <section class="container py-8">
+            <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services"/>
+            <DefaultSwipper />
+        </section>
+        <!-- Our Founder -->
+        <section class="container py-8">
+            <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
+                <HeroImage :data="hero" />
+                <HeroText
+                    description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
+                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
+            </div>
+        </section>
+
     </DefaultLayout>
 </template>

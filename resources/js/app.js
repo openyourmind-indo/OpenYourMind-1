@@ -1,5 +1,7 @@
-// ? Import Tailwind Css
+// ? Import Tailwind Css & swiper
 import "../css/app.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
 // ? Define vue, pinia store
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -19,9 +21,13 @@ import CardsDefault from './components/card/CardsDefault.vue';
 import Cards from './components/card/Cards.vue';
 import HeroImage from './components/hero/HeroImage.vue';
 import HeroText from './components/hero/HeroText.vue';
-
+import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
 // ? Initial configuration & Global Registration Component
 const app = createApp();
+// register Swiper custom elements
+register();
 app.component("App", App)
     .component("DefaultLayout", DefaultLayout)
     .component("NavbarComponent", NavbarComponent)
@@ -36,6 +42,7 @@ app.component("App", App)
     .component("CardsDefault", CardsDefault)
     .component("HeroImage", HeroImage)
     .component("HeroText", HeroText)
+    .component("DefaultSwipper", DefaultSwipper)
     .use(router)
     .use(createPinia())
     .mount("#app")
