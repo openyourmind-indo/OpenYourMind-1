@@ -12,6 +12,14 @@
           <input v-model="email" type="email" class="form-control" id="email" placeholder="Email" required>
         </div>
         <div class="mb-3">
+          <label for="phone_number" class="form-label">Phone Number</label>
+          <input v-model="phone_number" type="text" class="form-control" id="phone_number" placeholder="Phone Number" required>
+        </div>
+        <div class="mb-3">
+          <label for="birth_date" class="form-label">Birth Date</label>
+          <input v-model="birth_date" type="date" class="form-control" id="birth_date" required>
+        </div>
+        <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input v-model="password" type="password" class="form-control" id="password" placeholder="Password" required>
         </div>
@@ -26,6 +34,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -36,36 +45,78 @@ export default {
     };
   },
   methods: {
-  async register() {
-    try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation
-        })
-      });
-
-      const text = await response.text(); // Tambahkan ini
-      console.log('Response Text:', text); // Tambahkan ini
-
-      if (response.ok) {
-        const user = JSON.parse(text); // Ubah ini
-        localStorage.setItem('user', JSON.stringify(user));
+    async register() {
+      try {
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            phone_number: this.phone_number,
+            birth_date: this.birth_date,
+            password: this.password,
+            password_confirmation: this.password_confirmation
+          })
+        });
+        localStorage.setItem('token', response.token);
         this.$router.push({ name: 'home' });
-      } else {
-        const error = JSON.parse(text); // Ubah ini
-        alert(error.errors ? JSON.stringify(error.errors) : error.error || 'Registration failed');
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error('Error registering:', error);
     }
   }
-}
-}
+};
 </script>
+
+<!-- <script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      phone_number: '',
+      birth_date: '',
+      password: '',
+      password_confirmation: ''
+    };
+  },
+  methods: {
+    async register() {
+      try {
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            phone_number: this.phone_number,
+            birth_date: this.birth_date,
+            password: this.password,
+            password_confirmation: this.password_confirmation
+          })
+        });
+        
+        console.log(response);
+        const text = await response.text();
+        console.log('Response Text:', text);
+
+        if (response.ok) {
+          const user = JSON.parse(text);
+          localStorage.setItem('user', JSON.stringify(user));
+          this.$router.push({ name: 'home' });
+        } else {
+          const error = JSON.parse(text);
+          alert(error.errors ? JSON.stringify(error.errors) : error.error || 'Registration failed');
+        }
+      } catch (error) {
+        console.error('Error registering:', error);
+      }
+    }
+  }
+};
+</script> -->

@@ -17,7 +17,38 @@
   </div>
 </template>
 
+
 <script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const response = await fetch('/api/login', {
+             method: 'POST',
+             headers: {
+             'Content-Type': 'application/json'
+              },
+               body: JSON.stringify({
+                email: this.email,
+                password: this.password
+              })
+        });
+        localStorage.setItem('token', response.token);
+        this.$router.push({ name: 'home' });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+};
+</script>
+<!-- <script>
 export default {
     data() {
         return {
@@ -53,4 +84,4 @@ export default {
         }
     }
 };
-</script>
+</script> -->

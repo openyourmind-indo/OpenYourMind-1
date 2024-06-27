@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('{any}', function () {
-    return View::make('welcome');
+    return view('welcome');
 })->where('any', '.*');
 
 // Route::prefix('api')->group(function () {
