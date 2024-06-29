@@ -2,7 +2,7 @@
     <section class="flex items-center justify-center p-8 bg-stripes bg-cover min-h-screen lg:min-h-[519px]">
         <div class="flex flex-col items-center text-center text-white p-4 lg:p-12 relative">
             <img src="../../../public/placeholder/left-quote.svg" class="quote-icon top-left-quote" alt="Left Quote" />
-            <blockquote class="quote-text">
+            <blockquote class="quote-text font-secondary">
                 {{ quote }}
             </blockquote>
             <img src="../../../public/placeholder/right-quote.svg" class="quote-icon bottom-right-quote"
@@ -21,8 +21,6 @@ defineProps({
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
 :root {
     --quote-icon-size: 54px;
     --quote-icon-large-size: 92px;
@@ -37,7 +35,6 @@ defineProps({
 .quote-text {
     font-size: clamp(2rem, 4vw, 3.375rem);
     font-weight: bold;
-    font-family: 'Manrope', sans-serif;
     max-width: 80%;
     line-height: 1.2;
 }
