@@ -1,7 +1,7 @@
 // ? Import Tailwind Css & swiper
 import "../css/app.css";
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 // ? Define vue, pinia store
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -16,14 +16,15 @@ import ButtonHamburger from "@/components/base/ButtonHamburger.vue";
 import Button from "@/components/base/ButtonComponent.vue";
 import FooterComponent from "@/components/footer/FooterComponent.vue";
 import Brands from "@/components/brand/Brand.vue";
-import TestimoniCard from '@/components/testimoni/TestimoniCard.vue';
-import CardsDefault from './components/card/CardsDefault.vue';
-import Cards from './components/card/Cards.vue';
-import HeroImage from './components/hero/HeroImage.vue';
-import HeroText from './components/hero/HeroText.vue';
-import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
+import TestimoniCard from "@/components/testimoni/TestimoniCard.vue";
+import QuoteComponent from "./components/quote/QuoteComponent.vue";
+import CardsDefault from "./components/card/CardsDefault.vue";
+import Cards from "./components/card/Cards.vue";
+import HeroImage from "./components/hero/HeroImage.vue";
+import HeroText from "./components/hero/HeroText.vue";
+import DefaultSwipper from "./components/swipper/DefaultSwipper.vue";
 // import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
+import { register } from "swiper/element/bundle";
 // ? Initial configuration & Global Registration Component
 const app = createApp();
 // register Swiper custom elements
@@ -43,6 +44,7 @@ app.component("App", App)
     .component("HeroImage", HeroImage)
     .component("HeroText", HeroText)
     .component("DefaultSwipper", DefaultSwipper)
+    .component("QuoteComponent", QuoteComponent)
     .use(router)
     .use(createPinia())
-    .mount("#app")
+    .mount("#app");

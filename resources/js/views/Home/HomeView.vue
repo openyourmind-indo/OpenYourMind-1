@@ -55,6 +55,8 @@ const { CardsData } = storeToRefs(useStoreCard())
             <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services"/>
             <DefaultSwipper />
         </section>
+        <!-- Quote -->
+        <QuoteComponent quote="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         <!-- Our Founder -->
         <section class="container py-8">
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
