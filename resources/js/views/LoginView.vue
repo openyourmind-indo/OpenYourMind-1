@@ -23,65 +23,37 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   },
   methods: {
     async login() {
       try {
         const response = await fetch('/api/login', {
-             method: 'POST',
-             headers: {
-             'Content-Type': 'application/json'
-              },
-               body: JSON.stringify({
-                email: this.email,
-                password: this.password
-              })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password
+          })
         });
-        localStorage.setItem('token', response.token);
-        this.$router.push({ name: 'home' });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          this.$router.push({ name: 'home' });
+        } else {
+          this.errorMessage = data.message || 'Login failed. Please try again.';
+        }
       } catch (error) {
         console.error(error);
+        this.errorMessage = 'An error occurred. Please try again later.';
       }
     }
   }
 };
 </script>
-<!-- <script>
-export default {
-    data() {
-        return {
-            email: '',
-            password: ''
-        };
-    },
-    methods: {
-        async login() {
-            try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: this.email,
-                        password: this.password
-                    })
-                });
-
-                if (response.ok) {
-                    const user = await response.json();
-                    localStorage.setItem('user', JSON.stringify(user));
-                    this.$router.push({ name: 'beranda' }); e
-                } else {
-                    const error = await response.json();
-                    alert(error.error);
-                }
-            } catch (error) {
-                console.error('Error logging in:', error);
-            }
-        }
-    }
-};
-</script> -->

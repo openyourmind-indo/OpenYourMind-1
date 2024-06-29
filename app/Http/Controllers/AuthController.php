@@ -26,7 +26,7 @@ class AuthController extends Controller
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
-            
+    
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -34,57 +34,36 @@ class AuthController extends Controller
                 'birth_date' => $request->birth_date,
                 'password' => Hash::make($request->password),
             ]); 
-
+    
             $token = JWTAuth::fromUser($user);
-
-            return response()->json(['message' => 'User registered successfully', compact('token')], 201);
+    
+            return response()->json(['message' => 'User registered successfully', 'token' => $token], 201);
         } catch (\Exception $e) {
-            \Log::error('Registration Error: '.$e->getMessage());
             return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
         }
     }
+    
 
     public function login(Request $request)
     {
         try {
-            Log::info('Login attempt', ['email' => $request->email]);
-
             $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
 
-            $user = User::where('email', $request->email)->first();
+            $credentials = $request->only('email', 'password');
 
-            if ($user) {
-                Log::info('User found', ['email' => $request->email]);
-
-                if (Hash::check($request->password, $user->password)) {
-                    Log::info('Password check passed', ['email' => $request->email]);
-
-                    $token = JWTAuth::fromUser($user);
-                    Log::info('Token created', ['token' => $token]);
-
-                    return response()->json(['token' => $token], 200);
-                } else {
-                    Log::warning('Password check failed', ['email' => $request->email]);
-                    return response()->json(['error' => 'Unauthorized'], 401);
-                }
-            } else {
-                Log::warning('User not found', ['email' => $request->email]);
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
-        } catch (\Exception $e) {
-            Log::error('Login error', [
-                'email' => $request->email,
-                'message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
 
-            return response()->json(['error' => 'Server error'], 500);
+            return response()->json(['token' => "$token"], 200);
+        } catch (\Exception $e) {
+            \Log::error('Login Error: '.$e->getMessage());
+            return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
         }
     }
-
     public function logout(Request $request)
     {
         try {

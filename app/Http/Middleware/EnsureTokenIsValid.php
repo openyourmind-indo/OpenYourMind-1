@@ -1,11 +1,12 @@
 <?php
 
+
 namespace App\Http\Middleware;
 
 use Closure;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Exception;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
 
 class EnsureTokenIsValid
 {
@@ -14,12 +15,19 @@ class EnsureTokenIsValid
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('api')->check()) {
-            return $next($request);
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+        } catch (\Exception $e) {
+            if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
+                return response()->json(['status' => 'Token is Invalid'], 401);
+            } else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
+                return response()->json(['status' => 'Token is Expired'], 401);
+            } else {
+                return response()->json(['status' => 'Authorization Token not found'], 401);
+            }
         }
-
-        return response()->json(['message' => 'Unauthorized'], 401);
+        return $next($request);
     }
 }

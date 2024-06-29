@@ -33,45 +33,9 @@
   </div>
 </template>
 
+
+
 <script>
-
-export default {
-  data() {
-    return {
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: ''
-    };
-  },
-  methods: {
-    async register() {
-      try {
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: this.name,
-            email: this.email,
-            phone_number: this.phone_number,
-            birth_date: this.birth_date,
-            password: this.password,
-            password_confirmation: this.password_confirmation
-          })
-        });
-        localStorage.setItem('token', response.token);
-        this.$router.push({ name: 'home' });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
-};
-</script>
-
-<!-- <script>
 export default {
   data() {
     return {
@@ -100,23 +64,20 @@ export default {
             password_confirmation: this.password_confirmation
           })
         });
-        
-        console.log(response);
-        const text = await response.text();
-        console.log('Response Text:', text);
-
-        if (response.ok) {
-          const user = JSON.parse(text);
-          localStorage.setItem('user', JSON.stringify(user));
-          this.$router.push({ name: 'home' });
-        } else {
-          const error = JSON.parse(text);
-          alert(error.errors ? JSON.stringify(error.errors) : error.error || 'Registration failed');
+        const data = await response.json();
+        console.log(data);
+        console.log(data.token);
+        if (!response.ok) {
+          throw new Error(data.errors ? JSON.stringify(data.errors) : data.error || 'Registration failed');
         }
+
+        localStorage.setItem('token', data.token);
+        this.$router.push({ name: 'home' });
       } catch (error) {
         console.error('Error registering:', error);
+        alert(error.message);
       }
     }
   }
 };
-</script> -->
+</script>

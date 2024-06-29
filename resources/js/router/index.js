@@ -87,17 +87,22 @@ router.beforeEach((to, from, next) => {
     console.log(`Navigating to: ${to.name}, requiresAuth: ${to.meta.requiresAuth}, token: ${token}`);
   
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      if (!token) {
-        console.log('No token found, redirecting to login.');
-        next({ name: 'login' });
-      } else {
-        console.log('Token found, proceeding to the requested route.');
-        next();
-      }
+        if (!token) {
+            console.log('No token found, redirecting to login.');
+            next({ name: 'login' });
+        } else if(token === "undefined") {
+            console.log("Token is undefined, redirecting to login.");
+            localStorage.removeItem('token');
+            next({ name: 'login' });
+        } else {
+            console.log('Token found, proceeding to the requested route.');
+            next();
+        }
     } else {
-      next();
+        next();
     }
-  });
+});
+
   
   
 
