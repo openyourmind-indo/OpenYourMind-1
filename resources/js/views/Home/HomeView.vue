@@ -1,10 +1,12 @@
 <script setup>
 import { useStoreBrand } from '../../store/useStoreBrand';
 import { useStoreCard } from '../../store/StoreCard';
+import { useStoreAccordion } from '../../store/useStoreAccordion';
 import { storeToRefs } from 'pinia';
 import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
 const { CardsData } = storeToRefs(useStoreCard())
+const { FaqData } = storeToRefs(useStoreAccordion())
 </script>
 <template>
     <DefaultLayout>
@@ -66,6 +68,8 @@ const { CardsData } = storeToRefs(useStoreCard())
                     header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
             </div>
         </section>
+        <!-- Accordion -->
+        <Accordion :data="FaqData"></Accordion>
 
     </DefaultLayout>
 </template>

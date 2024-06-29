@@ -12,6 +12,7 @@ import DefaultLayout from "@/layouts/DefaultLayouts.vue";
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue";
 import NavItem from "@/components/navbar/NavItem.vue";
 import App from "@/components/App.vue";
+import Accordion from "@/components/accordion/Accordion.vue";
 import ButtonHamburger from "@/components/base/ButtonHamburger.vue";
 import Button from "@/components/base/ButtonComponent.vue";
 import FooterComponent from "@/components/footer/FooterComponent.vue";
@@ -45,6 +46,7 @@ app.component("App", App)
     .component("HeroText", HeroText)
     .component("DefaultSwipper", DefaultSwipper)
     .component("QuoteComponent", QuoteComponent)
+    .component("Accordion", Accordion)
     .use(router)
     .use(createPinia())
     .mount("#app");
