@@ -1,7 +1,7 @@
 // ? Import Tailwind Css & swiper
 import "../css/app.css";
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 // ? Define vue, pinia store
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -12,6 +12,7 @@ import DefaultLayout from "@/layouts/DefaultLayouts.vue";
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue";
 import NavItem from "@/components/navbar/NavItem.vue";
 import App from "@/components/App.vue";
+import Accordion from "@/components/accordion/Accordion.vue";
 import ButtonHamburger from "@/components/base/ButtonHamburger.vue";
 import Button from "@/components/base/ButtonComponent.vue";
 import FooterComponent from "@/components/footer/FooterComponent.vue";
@@ -25,8 +26,9 @@ import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
 import Quote from './components/quote/Quote.vue';
 import CardsGallery from './components/gallery/CardsGallery.vue';
 import Accordion from './components/accordion/Accordion.vue';
+
 // import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
+import { register } from "swiper/element/bundle";
 // ? Initial configuration & Global Registration Component
 const app = createApp();
 // register Swiper custom elements
@@ -51,4 +53,4 @@ app.component("App", App)
     .component("Accordion", Accordion)
     .use(router)
     .use(createPinia())
-    .mount("#app")
+    .mount("#app");

@@ -1,11 +1,13 @@
 <script setup>
 import { useStoreBrand } from '../../store/useStoreBrand';
 import { useStoreCard } from '../../store/StoreCard';
+import { useStoreAccordion } from '../../store/useStoreAccordion';
 import { useStoreGallery } from '../../store/useStoreGallery';
 import { storeToRefs } from 'pinia';
 import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
 const { CardsData } = storeToRefs(useStoreCard())
+const { FaqData } = storeToRefs(useStoreAccordion())
 const { ImageData } = storeToRefs(useStoreGallery())
 </script>
 <template>
@@ -61,6 +63,8 @@ const { ImageData } = storeToRefs(useStoreGallery())
             <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services" />
             <DefaultSwipper />
         </section>
+        <!-- Quote -->
+        <QuoteComponent quote="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         <!-- Our Founder -->
         <section class="py-8 bg-cover bg-hero-pattern ">
             <div class="container px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
@@ -107,7 +111,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
         </section>
         <!-- Accordion -->
         <section>
-            <Accordion />
+        <Accordion :data="FaqData"></Accordion>
         </section>
     </DefaultLayout>
 
