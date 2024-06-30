@@ -4,6 +4,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
     theme: {
         fontFamily: {
@@ -11,6 +12,9 @@ export default {
             'secondary': ["Manrope", "sans-serif"]
         },
         extend: {
+            backgroundImage: {
+                'hero-pattern': "url('/resources/public/bg/bg-founder.svg')",
+            },
             colors: {
                 'card-white': '#F6F5F5',
                 'hero-main': '#FCF8F4',
@@ -27,6 +31,8 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ]
 }
 
