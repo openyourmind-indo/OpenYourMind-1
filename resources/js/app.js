@@ -22,6 +22,9 @@ import Cards from './components/card/Cards.vue';
 import HeroImage from './components/hero/HeroImage.vue';
 import HeroText from './components/hero/HeroText.vue';
 import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
+import Quote from './components/quote/Quote.vue';
+import CardsGallery from './components/gallery/CardsGallery.vue';
+import Accordion from './components/accordion/Accordion.vue';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
 // ? Initial configuration & Global Registration Component
@@ -43,6 +46,9 @@ app.component("App", App)
     .component("HeroImage", HeroImage)
     .component("HeroText", HeroText)
     .component("DefaultSwipper", DefaultSwipper)
+    .component("Quote", Quote)
+    .component("CardsGallery", CardsGallery)
+    .component("Accordion", Accordion)
     .use(router)
     .use(createPinia())
     .mount("#app")
