@@ -2,11 +2,13 @@
 import { useStoreBrand } from '../../store/useStoreBrand';
 import { useStoreCard } from '../../store/StoreCard';
 import { useStoreAccordion } from '../../store/useStoreAccordion';
+import { useStoreGallery } from '../../store/useStoreGallery';
 import { storeToRefs } from 'pinia';
 import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
 const { CardsData } = storeToRefs(useStoreCard())
 const { FaqData } = storeToRefs(useStoreAccordion())
+const { ImageData } = storeToRefs(useStoreGallery())
 </script>
 <template>
     <DefaultLayout>
@@ -49,27 +51,68 @@ const { FaqData } = storeToRefs(useStoreAccordion())
                 <HeroImage :data="hero" />
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
-                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
+                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy">
+                    <Button
+                        class="px-6 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-secondary-green md:rounded-full hover:shadow-lg"
+                        title="See Detail" />
+                </HeroText>
             </div>
         </section>
         <!-- Services -->
         <section class="container py-8">
-            <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services"/>
+            <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services" />
             <DefaultSwipper />
         </section>
         <!-- Quote -->
         <QuoteComponent quote="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         <!-- Our Founder -->
-        <section class="container py-8">
-            <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
+        <section class="py-8 bg-cover bg-hero-pattern ">
+            <div class="container px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroImage :data="hero" />
-                <HeroText
-                    description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
-                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy" />
+                <HeroText className="text-white pt-2 lg:pt-0" header="Our Founder" title="Sahda Salsabila Rojadi">
+                    <div class="flex-col items-start justify-center">
+                        <div class="flex flex-row items-start gap-5 pb-4">
+                            <IconVue icon="academicons:acclaim-square" class="text-white size-[84px]" />
+                            <div class="flex flex-col items-start text-white">
+                                <h1 class="text-xl font-bold font-secondary">Professional Growth</h1>
+                                <p class="pr-10 text-base font-normal lg:pr-20 font-main opacity-80">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                    Convallis est urna adipiscing fringilla nulla
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </HeroText>
             </div>
         </section>
+        <!-- Team conselor -->
+        <section class="container py-8">
+            <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
+                <HeroText
+                    description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
+                    header="Team Conselor" title="Caring for Your Mental Health Get to Know Our Team of Experts">
+                    <Button
+                        class="px-6 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-primary-text-brown md:rounded-full hover:shadow-lg"
+                        title="See Detail" />
+                </HeroText>
+                <HeroImage :data="hero" />
+            </div>
+        </section>
+        <!-- Quote-->
+        <section class="container py-8">
+            <Quote
+                title="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
+        </section>
+        <!-- Quote-->
+        <section class="container py-8">
+            <CardsGallery title="A Gallery of Mental Health Themes Through Art"
+                description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing."
+                :data="ImageData" />
+        </section>
         <!-- Accordion -->
+        <section>
         <Accordion :data="FaqData"></Accordion>
-
+        </section>
     </DefaultLayout>
+
 </template>

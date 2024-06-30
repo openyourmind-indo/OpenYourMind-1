@@ -2,7 +2,7 @@
 defineProps({
     heading: {
         type: String,
-        required: true,
+        required: false,
         default: 'Gallery'
     },
     title: {
@@ -23,9 +23,12 @@ defineProps({
 </script>
 <template>
     <section>
-        <div class="grid grid-cols-2 place-items-end">
-            <div class="">tes</div>
-            <div class="">tes</div>
+        <header class="text-base font-medium font-secondary">
+            {{ heading }}
+        </header>
+        <div class="grid grid-cols-2 pt-2 place-items-start place-content-start">
+            <header class="text-4xl font-bold font-secondary">{{ title }}</header>
+            <aside class="text-base font-normal font-main">{{ description }}</aside>
         </div>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
             <div class="grid gap-4" v-for="item in data" :key="item.id">
