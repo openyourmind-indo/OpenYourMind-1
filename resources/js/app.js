@@ -25,8 +25,6 @@ import HeroText from './components/hero/HeroText.vue';
 import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
 import Quote from './components/quote/Quote.vue';
 import CardsGallery from './components/gallery/CardsGallery.vue';
-import Accordion from './components/accordion/Accordion.vue';
-
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
 // ? Initial configuration & Global Registration Component

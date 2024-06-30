@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen p-4" style="height: 731px;">
-        <header class="text-faq-header font-bold font-secondary">Faq</header>
-        <h1 class="text-faq-title font-bold font-secondary mb-32">Asked Questions</h1>
-        <div v-for="(item, index) in data" :key="index" class="accordion-item w-full max-w-4xl mb-4">
-            <button @click="toggle(index)" class="accordion-header w-full flex justify-between items-center p-4 ">
-                <span class="font-bold text-accordion-title font-secondary">{{ item.title }}</span>
+    <div class="flex flex-col items-center justify-center p-4">
+        <header class="text-base font-bold font-secondary">Faq</header>
+        <h1 class="mb-32 text-4xl font-bold text-center lg:text-6xl font-secondary">Asked Questions</h1>
+        <div v-for="(item, index) in data" :key="index" class="w-full max-w-4xl mb-4 accordion-item">
+            <button @click="toggle(index)" class="flex items-center justify-between w-full p-4 accordion-header ">
+                <span class="text-lg font-bold lg:text-accordion-title font-secondary">{{ item.title }}</span>
                 <svg :class="{ 'transform rotate-180': isOpen(index) }" class="w-12 h-12 transition-transform"
                     fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -12,7 +12,7 @@
                         clip-rule="evenodd" />
                 </svg>
             </button>
-            <div v-show="isOpen(index)" class="accordion-content p-4">
+            <div v-show="isOpen(index)" class="p-4 accordion-content">
                 <p class="font-primary text-accordion-content">{{ item.content }}</p>
             </div>
         </div>

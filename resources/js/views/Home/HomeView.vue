@@ -46,7 +46,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
             <Cards :data="CardsData" />
         </CardsDefault>
         <!-- About Us -->
-        <section class="container py-8">
+        <section class="container py-16">
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroImage :data="hero" />
                 <HeroText
@@ -59,14 +59,12 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Services -->
-        <section class="container py-8">
+        <section class="container py-16">
             <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services" />
             <DefaultSwipper />
         </section>
-        <!-- Quote -->
-        <QuoteComponent quote="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         <!-- Our Founder -->
-        <section class="py-8 bg-cover bg-hero-pattern ">
+        <section class="py-16 bg-cover bg-hero-pattern ">
             <div class="container px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroImage :data="hero" />
                 <HeroText className="text-white pt-2 lg:pt-0" header="Our Founder" title="Sahda Salsabila Rojadi">
@@ -86,7 +84,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Team conselor -->
-        <section class="container py-8">
+        <section class="container py-16">
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
@@ -99,19 +97,19 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Quote-->
-        <section class="container py-8">
+        <section class="container py-16">
             <Quote
                 title="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         </section>
         <!-- Quote-->
-        <section class="container py-8">
+        <section class="container py-16 pl-4">
             <CardsGallery title="A Gallery of Mental Health Themes Through Art"
                 description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing."
                 :data="ImageData" />
         </section>
         <!-- Accordion -->
         <section>
-        <Accordion :data="FaqData"></Accordion>
+            <Accordion :data="FaqData"></Accordion>
         </section>
     </DefaultLayout>
 

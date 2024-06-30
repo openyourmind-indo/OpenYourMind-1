@@ -7,7 +7,7 @@ defineProps({
 })
 </script>
 <template>
-    <blockquote class="flex text-4xl italic font-bold text-center text-black font-secondary">
+    <blockquote class="flex text-xl italic font-bold text-center text-black lg:text-4xl font-secondary">
         <svg class="w-8 h-8 mb-4 text-gray-400 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="currentColor" viewBox="0 0 18 14">
             <path
