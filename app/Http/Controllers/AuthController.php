@@ -44,6 +44,7 @@ class AuthController extends Controller
     }
     
 
+    
     public function login(Request $request)
     {
         try {
@@ -51,19 +52,30 @@ class AuthController extends Controller
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
-
+    
             $credentials = $request->only('email', 'password');
-
+    
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
-
-            return response()->json(['token' => "$token"], 200);
+    
+            $user = Auth::user();
+            $role = $user->role;
+            // Logging role user
+            Log::info('User logged in', ['user_id' => $user->id, 'role' => $user->role]);
+    
+            if ($user->role == 'admin') {
+                return response()->json(compact('role','token'), 200);
+            }
+    
+            return response()->json(compact('token','role'), 200);
         } catch (\Exception $e) {
-            \Log::error('Login Error: '.$e->getMessage());
+            Log::error('Login Error: ' . $e->getMessage());
             return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
         }
     }
+
+    
     public function logout(Request $request)
     {
         try {

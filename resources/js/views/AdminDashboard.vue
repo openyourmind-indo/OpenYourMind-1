@@ -1,10 +1,7 @@
 <template>
-    <DefaultLayout>
-        <h1 class="text-2xl text-red-600">This is State:</h1>
-       <button @click="logout">Logout</button>
-    </DefaultLayout>
+<h1>Ini dashboard admin</h1>
+<button @click="logout">Logout</button>
 </template>
-
 <script>
 export default {
   methods: {

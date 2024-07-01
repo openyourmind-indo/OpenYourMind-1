@@ -2,12 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 export const routes = [
     {
+        path: '/admin/dashboard',
+        name: 'adminDashboard',
+        component: () => import('../views/AdminDashboard.vue'),
+        meta: { requiresAuth: true, role: 'admin' , title: "Admin dashboard" }
+    },
+    {
         path: '/',
         name: 'home',
         component: HomeView,
         meta: {
             requiresAuth: true,
-            title: 'Home Page'
+            title: 'Home Page',
+            role: 'user'
         }
     },
     {
@@ -16,7 +23,8 @@ export const routes = [
         component: () => import('../views/AboutView.vue'),
         meta: {
             requiresAuth: true,
-            title: 'About Page'
+            title: 'About Page',
+            role: 'user'
         }
     },
     {
@@ -25,7 +33,8 @@ export const routes = [
         component: () => import('../views/ProgramView.vue'),
         meta: {
             requiresAuth: true,
-            title: 'Program Page'
+            title: 'Program Page',
+            role: 'user'
         }
     },
     {
@@ -34,7 +43,8 @@ export const routes = [
         component: () => import('../views/ArtikelView.vue'),
         meta: {
             requiresAuth: true,
-            title: 'Artikel Page'
+            title: 'Artikel Page',
+            role: 'user'
         }
     },
     {
@@ -43,7 +53,8 @@ export const routes = [
         component: () => import('../views/TestimoniView.vue'),
         meta: {
             requiresAuth: true,
-            title: 'Testimoni Page'
+            title: 'Testimoni Page',
+            role: 'user'
         }
     },
     {
@@ -52,7 +63,8 @@ export const routes = [
         component: HomeView,
         meta: {
             requiresAuth: true,
-            title: 'Home Page'
+            title: 'Home Page',
+            role: 'user'
         }
     },  {
         path: '/login',
@@ -69,7 +81,13 @@ export const routes = [
         meta: {
             title: 'Register Page'
         }
-    }
+    },
+   
+    {
+        path: '/unauthorized',
+        name: 'Unauthorized',
+        component: () => import('../views/Unauthorized.vue')
+    },
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },
 ]
@@ -83,27 +101,37 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
     const token = localStorage.getItem('token');
-    console.log(`Navigating to: ${to.name}, requiresAuth: ${to.meta.requiresAuth}, token: ${token}`);
+    const userRole = localStorage.getItem('userRole');
   
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (!token) {
-            console.log('No token found, redirecting to login.');
-            next({ name: 'login' });
-        } else if(token === "undefined") {
-            console.log("Token is undefined, redirecting to login.");
-            localStorage.removeItem('token');
-            next({ name: 'login' });
-        } else {
-            console.log('Token found, proceeding to the requested route.');
-            next();
-        }
+    if (requiresAuth && !token) {
+      next('/login');
+    } else if (to.meta.role && to.meta.role !== userRole) {
+      next('/unauthorized');
     } else {
-        next();
+      next();
     }
-});
-
+  });
   
   
 
+//   router.beforeEach((to, from, next) => {
+//     const token = localStorage.getItem('token');
+//     const role = localStorage.getItem('role');
+
+//     if (to.matched.some(record => record.meta.requiresAuth)) {
+//         if (!token) {
+//             next('/login');
+//         } else {
+//             if (to.matched.some(record => record.meta.role === role)) {
+//                 next();
+//             } else {
+//                 next('/unauthorized'); // Redirect to unauthorized page or some other logic
+//             }
+//         }
+//     } else {
+//         next();
+//     }
+// });
 export default router

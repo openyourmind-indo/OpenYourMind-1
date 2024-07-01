@@ -13,10 +13,10 @@
         </div>
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
+      <div v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -42,10 +42,15 @@ export default {
         });
 
         const data = await response.json();
-
         if (response.ok) {
           localStorage.setItem('token', data.token);
-          this.$router.push({ name: 'home' });
+          localStorage.setItem('userRole', data.role); // Simpan role user di localStorage
+
+          if (data.role === 'admin') {
+            this.$router.push({ name: 'adminDashboard' });
+          } else {
+            this.$router.push({ name: 'home' });
+          }
         } else {
           this.errorMessage = data.message || 'Login failed. Please try again.';
         }
