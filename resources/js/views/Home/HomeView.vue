@@ -3,10 +3,12 @@ import { useStoreBrand } from '../../store/useStoreBrand';
 import { useStoreCard } from '../../store/StoreCard';
 import { useStoreAccordion } from '../../store/useStoreAccordion';
 import { useStoreGallery } from '../../store/useStoreGallery';
+import { useArticle } from '../../store/article/useArticle';
 import { storeToRefs } from 'pinia';
 import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
-const { CardsData } = storeToRefs(useStoreCard())
+const { CardsData, CardPrice } = storeToRefs(useStoreCard())
+const { ArticleData } = storeToRefs(useArticle())
 const { FaqData } = storeToRefs(useStoreAccordion())
 const { ImageData } = storeToRefs(useStoreGallery())
 </script>
@@ -46,7 +48,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
             <Cards :data="CardsData" />
         </CardsDefault>
         <!-- About Us -->
-        <section class="container py-8">
+        <section class="container py-16">
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroImage :data="hero" />
                 <HeroText
@@ -59,14 +61,12 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Services -->
-        <section class="container py-8">
+        <section class="container py-16">
             <CardsDefault title="Services" description="Empowering Minds Our Mental Health Consulting Services" />
             <DefaultSwipper />
         </section>
-        <!-- Quote -->
-        <QuoteComponent quote="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         <!-- Our Founder -->
-        <section class="py-8 bg-cover bg-hero-pattern ">
+        <section class="py-16 bg-cover bg-hero-pattern">
             <div class="container px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroImage :data="hero" />
                 <HeroText className="text-white pt-2 lg:pt-0" header="Our Founder" title="Sahda Salsabila Rojadi">
@@ -86,7 +86,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Team conselor -->
-        <section class="container py-8">
+        <section class="container py-16">
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
@@ -99,20 +99,37 @@ const { ImageData } = storeToRefs(useStoreGallery())
             </div>
         </section>
         <!-- Quote-->
-        <section class="container py-8">
+        <section class="container py-16">
             <Quote
                 title="Self-care is not a luxury. It's a necessity. Without it, we cannot be our best selves, mentally, emotionally, or physically." />
         </section>
         <!-- Quote-->
-        <section class="container py-8">
+        <section class="container py-16 pl-4">
             <CardsGallery title="A Gallery of Mental Health Themes Through Art"
                 description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing."
                 :data="ImageData" />
         </section>
+        <!-- PromotionCard -->
+        <section class="py-16 bg-cover bg-hero-pattern1">
+            <PromotionCard title="Join To Our Newsletter" description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non
+            mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed
+            et. A in ullamcorper ipsum.">
+                <PromotionForm />
+            </PromotionCard>
+        </section>
+        <!-- Princing -->
+        <CardsDefault class="grid grid-cols-1 place-items-center " title="Pricing"
+            description="Choose of Mental Health Consultation Packages for Your Needs">
+            <!-- <CardPrice></CardPrice> -->
+            <test :data="CardPrice"></test> <!-- <h1>ok</h1> -->
+        </CardsDefault>
         <!-- Accordion -->
         <section>
-        <Accordion :data="FaqData"></Accordion>
+            <Accordion :data="FaqData"></Accordion>
         </section>
+        <!-- articel -->
+        <CardsDefault title="Article" description="Our Articel For You">
+            <CardArticle :data="ArticleData" />
+        </CardsDefault>
     </DefaultLayout>
-
 </template>

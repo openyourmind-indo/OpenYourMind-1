@@ -26,11 +26,11 @@ defineProps({
         <header class="text-base font-medium font-secondary">
             {{ heading }}
         </header>
-        <div class="grid grid-cols-2 pt-2 place-items-start place-content-start">
+        <div class="grid grid-cols-1 pt-2 lg:grid-cols-2 place-items-start place-content-start">
             <header class="text-4xl font-bold font-secondary">{{ title }}</header>
             <aside class="text-base font-normal font-main">{{ description }}</aside>
         </div>
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div class="grid grid-cols-2 gap-4 pt-4 md:grid-cols-4">
             <div class="grid gap-4" v-for="item in data" :key="item.id">
                 <div>
                     <img class="h-auto max-w-full rounded-lg" :src="item.img" alt="">
