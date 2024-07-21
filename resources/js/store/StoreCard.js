@@ -1,6 +1,6 @@
 // ? State management pinia for handle large data procces from backend
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 export const useStoreCard = defineStore('Card', () => {
     // ? state
     const CardsData = ref([
@@ -20,5 +20,11 @@ export const useStoreCard = defineStore('Card', () => {
             description: 'Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris.'
         },
     ])
-    return { CardsData }
+    const CardPrice = shallowRef(Array.from({ length: 4 }, () => ({
+        id: Math.random(),
+        title: 'Standard',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipi',
+        price: 'Rp 79.99'
+    })))
+    return { CardsData, CardPrice }
 })

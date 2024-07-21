@@ -25,8 +25,13 @@ import HeroText from './components/hero/HeroText.vue';
 import DefaultSwipper from './components/swipper/DefaultSwipper.vue';
 import Quote from './components/quote/Quote.vue';
 import CardsGallery from './components/gallery/CardsGallery.vue';
+import PromotionCard from './components/card/PromotionCard.vue';
+import PromotionForm from './components/form/PromotionForm.vue';
+import CardArticle from './components/card/CardArticle.vue';
+import test from './components/card/test.vue';
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
+import CardPrice from './components/card/CardPrice.vue';
 // ? Initial configuration & Global Registration Component
 const app = createApp();
 // register Swiper custom elements
@@ -49,6 +54,11 @@ app.component("App", App)
     .component("Quote", Quote)
     .component("CardsGallery", CardsGallery)
     .component("Accordion", Accordion)
+    .component("PromotionCard", PromotionCard)
+    .component("PromotionForm", PromotionForm)
+    .component("CardArticle", CardArticle)
+    .component("CardPrice", CardPrice)
+    .component("test", test)
     .use(router)
     .use(createPinia())
     .mount("#app");

@@ -30,7 +30,7 @@ defineProps({
             <header class="text-4xl font-bold font-secondary">{{ title }}</header>
             <aside class="text-base font-normal font-main">{{ description }}</aside>
         </div>
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div class="grid grid-cols-2 gap-4 pt-4 md:grid-cols-4">
             <div class="grid gap-4" v-for="item in data" :key="item.id">
                 <div>
                     <img class="h-auto max-w-full rounded-lg" :src="item.img" alt="">
