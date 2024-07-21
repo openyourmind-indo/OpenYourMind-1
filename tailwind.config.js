@@ -14,6 +14,8 @@ export default {
         extend: {
             backgroundImage: {
                 'hero-pattern': "url('/resources/public/bg/bg-founder.svg')",
+                'hero-pattern1': "url('/resources/public/bg/newspaper.png')",
+                // 'newsletter-pattern': "url('resources/public/bg/newspaper.png')"
             },
             colors: {
                 "card-white": "#F6F5F5",
