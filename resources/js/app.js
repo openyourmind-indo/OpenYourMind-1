@@ -29,6 +29,7 @@ import PromotionCard from './components/card/PromotionCard.vue';
 import PromotionForm from './components/form/PromotionForm.vue';
 import CardArticle from './components/card/CardArticle.vue';
 import test from './components/card/test.vue';
+import CardTesti from './components/card/CardTesti.vue';
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
 import CardPrice from './components/card/CardPrice.vue';
@@ -59,6 +60,7 @@ app.component("App", App)
     .component("CardArticle", CardArticle)
     .component("CardPrice", CardPrice)
     .component("test", test)
+    .component("CardTesti", CardTesti)
     .use(router)
     .use(createPinia())
     .mount("#app");
