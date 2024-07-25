@@ -15,6 +15,7 @@ export default {
             backgroundImage: {
                 'hero-pattern': "url('/resources/public/bg/bg-founder.svg')",
                 'hero-pattern1': "url('/resources/public/bg/newspaper.png')",
+                'hero-bg': "url('/resources/public/hero-bg.svg')",
                 // 'newsletter-pattern': "url('resources/public/bg/newspaper.png')"
             },
             colors: {

@@ -7,16 +7,16 @@ import LocationIcon from 'public/location.svg'
 
 <template>
     <footer class="bg-primary-bg-brown">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 ">
+        <div class="w-full max-w-screen-xl p-4 py-6 mx-auto lg:py-8 ">
             <div class="md:flex md:justify-between ">
                 <div class="mb-6 md:mb-0">
                     <a href="/" class="flex items-center">
                         <img :src="BrandLogo" class="h-8 pr-1" alt="OYM Logo" />
                         <span
-                            class="self-center text-3xl md:text-2xl sm:text-xl font-bold whitespace-nowrap dark:text-white">Open
+                            class="self-center text-3xl font-bold md:text-2xl sm:text-xl whitespace-nowrap dark:text-white">Open
                             Your Mind</span>
                     </a>
-                    <div class="mt-4 text-2xl md:text-1xl sm:text-lg text-white dark:text-white">
+                    <div class="mt-4 text-2xl text-white md:text-1xl sm:text-lg dark:text-white">
                         <p>
                             <span style="display: block; line-height: 1.5;">Lorem ipsum dolor sit amet
                                 consectetur.</span>
@@ -26,11 +26,11 @@ import LocationIcon from 'public/location.svg'
 
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
+                <div class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
                     <div>
-                        <h2 class="mb-4 font-bold text-3xl md:text-2xl sm:text-xl text-white dark:text-white">Services
+                        <h2 class="mb-4 text-3xl font-bold text-white md:text-2xl sm:text-xl dark:text-white">Services
                         </h2>
-                        <ul class=" text-lg md:text-base sm:text-sm text-white dark:text-white">
+                        <ul class="text-lg text-white  md:text-base sm:text-sm dark:text-white">
                             <li class="mb-3">
                                 <a href="/" class="hover:underline">Free Consultant</a>
                             </li>
@@ -46,23 +46,23 @@ import LocationIcon from 'public/location.svg'
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-4 font-bold text-3xl md:text-2xl sm:text-xl text-white dark:text-white">Contact
+                        <h2 class="mb-4 text-3xl font-bold text-white md:text-2xl sm:text-xl dark:text-white">Contact
                         </h2>
-                        <ul class="text-lg md:text-base sm:text-sm text-white dark:text-white">
-                            <li class="mb-4 flex items-center">
-                                <img :src="CallIcon" class="h-6 w-6 mr-2" alt="Call Icon" />
+                        <ul class="text-lg text-white md:text-base sm:text-sm dark:text-white">
+                            <li class="flex items-center mb-4">
+                                <img :src="CallIcon" class="w-6 h-6 mr-2" alt="Call Icon" />
                                 <a href="tel:+628xxxxxxxxxxx" class="hover:underline">+62 8xxxxxxxxxxx</a>
                             </li>
-                            <li class="mb-4 flex items-center">
-                                <img :src="MessageIcon" class="h-6 w-6 mr-2" alt="Message Icon" />
+                            <li class="flex items-center mb-4">
+                                <img :src="MessageIcon" class="w-6 h-6 mr-2" alt="Message Icon" />
                                 <a href="mailto:openyourmind@gmail.com"
                                     class="hover:underline">openyourmind@gmail.com</a>
                             </li>
-                            <li class="mb-4 flex items-center">
-                                <img :src="LocationIcon" class="h-6 w-6 mr-2" alt="Location Icon" />
+                            <li class="flex items-center mb-4">
+                                <img :src="LocationIcon" class="w-6 h-6 mr-2" alt="Location Icon" />
                                 <div>
                                     <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Letjen+Sutoyo+1,+Jember,+Jawa+Timur"
-                                        class="hover:underline block">
+                                        class="block hover:underline">
                                         <span class="block">Jl. Letjen Sutoyo 1,</span>
                                         <span class="block">Jember, Jawa Timur</span>
                                     </a>
@@ -73,8 +73,8 @@ import LocationIcon from 'public/location.svg'
                     </div>
 
                     <div>
-                        <h2 class="mb-4 font-bold text-3xl md:text-2xl sm:text-xl text-white dark:text-white">Links</h2>
-                        <ul class=" text-lg md:text-base sm:text-sm text-white dark:text-white">
+                        <h2 class="mb-4 text-3xl font-bold text-white md:text-2xl sm:text-xl dark:text-white">Links</h2>
+                        <ul class="text-lg text-white  md:text-base sm:text-sm dark:text-white">
                             <li class="mb-3">
                                 <a href="/" class="hover:underline">Privacy Policy</a>
                             </li>
@@ -84,7 +84,7 @@ import LocationIcon from 'public/location.svg'
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-4 font-bold text-3xl md:text-2xl sm:text-xl text-white dark:text-white">Maps</h2>
+                        <h2 class="mb-4 text-3xl font-bold text-white md:text-2xl sm:text-xl dark:text-white">Maps</h2>
                         <iframe class="w-full h-40"
                             src="https://www.openstreetmap.org/export/embed.html?bbox=113.708%2C-8.264%2C113.715%2C-8.255&amp;layer=mapnik"
                             allowfullscreen></iframe>
@@ -95,7 +95,7 @@ import LocationIcon from 'public/location.svg'
             <div class="flex flex-col items-center">
                 <div class="flex flex-col items-center">
                     <div class="flex mb-4">
-                        <a href="#" class="text-white hover:text-gray-500 mx-2">
+                        <a href="#" class="mx-2 text-white hover:text-gray-500">
                             <svg width="31" height="30" viewBox="0 0 31 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.5" y="0.000244141" width="30" height="30" rx="15" fill="#FCF8F4" />
@@ -105,7 +105,7 @@ import LocationIcon from 'public/location.svg'
                             </svg>
                             <span class="sr-only">Instagram page</span>
                         </a>
-                        <a href="#" class="text-white hover:text-gray-500 mx-2">
+                        <a href="#" class="mx-2 text-white hover:text-gray-500">
                             <svg width="31" height="30" viewBox="0 0 31 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.5" y="0.000244141" width="30" height="30" rx="15" fill="#FCF8F4" />
@@ -115,7 +115,7 @@ import LocationIcon from 'public/location.svg'
                             </svg>
                             <span class="sr-only">Facebook page</span>
                         </a>
-                        <a href="#" class="text-white hover:text-gray-500 mx-2">
+                        <a href="#" class="mx-2 text-white hover:text-gray-500">
                             <svg width="31" height="30" viewBox="0 0 31 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.5" y="0.000244141" width="30" height="30" rx="15" fill="#FCF8F4" />
@@ -125,7 +125,7 @@ import LocationIcon from 'public/location.svg'
                             </svg>
                             <span class="sr-only">Youtube page</span>
                         </a>
-                        <a href="#" class="text-white hover:text-gray-500 mx-2">
+                        <a href="#" class="mx-2 text-white hover:text-gray-500">
                             <svg width="31" height="30" viewBox="0 0 31 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.5" y="0.000244141" width="30" height="30" rx="15" fill="#FCF8F4" />
@@ -135,7 +135,7 @@ import LocationIcon from 'public/location.svg'
                             </svg>
                             <span class="sr-only">Twitter page</span>
                         </a>
-                        <a href="#" class="text-white hover:text-gray-500 mx-2">
+                        <a href="#" class="mx-2 text-white hover:text-gray-500">
                             <svg width="31" height="30" viewBox="0 0 31 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.5" y="0.000244141" width="30" height="30" rx="15" fill="#FCF8F4" />

@@ -7,7 +7,7 @@ import { useArticle } from '../../store/article/useArticle';
 import { storeToRefs } from 'pinia';
 import hero from 'public/hero.svg'
 const { TestimoniData, BrandsData } = storeToRefs(useStoreBrand())
-const { CardsData, CardPrice } = storeToRefs(useStoreCard())
+const { CardsData, CardPrice, CardTesti } = storeToRefs(useStoreCard())
 const { ArticleData } = storeToRefs(useArticle())
 const { FaqData } = storeToRefs(useStoreAccordion())
 const { ImageData } = storeToRefs(useStoreGallery())
@@ -123,6 +123,21 @@ const { ImageData } = storeToRefs(useStoreGallery())
             <!-- <CardPrice></CardPrice> -->
             <test :data="CardPrice"></test> <!-- <h1>ok</h1> -->
         </CardsDefault>
+        <!-- Maps -->
+        <section class="container py-16">
+            <CardsDefault title="Maps" description="Mapping Out Mental Health Consulting Strategies" />
+            <MapsVue />
+        </section>
+        <!-- Testimonials -->
+        <section class="container py-16">
+            <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
+                <HeroText header="Team Conselor" title="Caring for Your Mental Health Get to Know Our Team of Experts">
+                </HeroText>
+                <div class="lg:col-span-6">
+                    <CardTestimonial :data="CardTesti"></CardTestimonial>
+                </div>
+            </div>
+        </section>
         <!-- Accordion -->
         <section>
             <Accordion :data="FaqData"></Accordion>

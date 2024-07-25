@@ -1,6 +1,7 @@
 // ? State management pinia for handle large data procces from backend
 import { defineStore } from 'pinia'
 import { ref, shallowRef } from 'vue'
+import { faker } from '@faker-js/faker';
 export const useStoreCard = defineStore('Card', () => {
     // ? state
     const CardsData = ref([
@@ -26,5 +27,12 @@ export const useStoreCard = defineStore('Card', () => {
         description: 'Lorem, ipsum dolor sit amet consectetur adipi',
         price: 'Rp 79.99'
     })))
-    return { CardsData, CardPrice }
+    const CardTesti = shallowRef(Array.from({ length: 2 }, () => ({
+        id: Math.random(),
+        title: 'Client',
+        description: faker.lorem.paragraph(4),
+        img: faker.image.avatarGitHub()
+    })))
+
+    return { CardsData, CardPrice, CardTesti }
 })
