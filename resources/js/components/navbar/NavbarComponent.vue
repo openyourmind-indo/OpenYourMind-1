@@ -5,7 +5,7 @@ import BrandLogo from 'public/Logo.svg'
 const hamburger = ref(true);
 </script>
 <template>
-    <nav class="bg-transparent  start-0">
+    <nav class="container start-0">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto ">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img :src="BrandLogo" class="h-8" alt="Flowbite Logo" />
