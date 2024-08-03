@@ -33,6 +33,15 @@ export const routes = [
             title: 'Artikel Page'
         }
     },
+    {
+        path: '/articel/:id',
+        name: 'ArticelDetails',
+        component: () => import('views/Artikel/ArtikelDetail.vue'),
+        meta: {
+            title: 'Artikel Page'
+        },
+        props: route => ({ ...route.params, id: route.params.id }),
+    },
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },
 ]
