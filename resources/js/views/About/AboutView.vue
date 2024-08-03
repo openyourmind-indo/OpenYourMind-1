@@ -52,9 +52,9 @@ const { ImageData } = storeToRefs(useStoreGallery())
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
                     header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy">
-                    <Button
+                    <!-- <Button
                         class="px-6 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-secondary-green md:rounded-full hover:shadow-lg"
-                        title="See Detail" />
+                        title="See Detail" /> -->
                 </HeroText>
             </div>
         </section>
@@ -68,7 +68,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
                 <HeroImage :data="hero" />
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
-                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy">
+                    header="Our History" title="History">
                 </HeroText>
             </div>
         </section>
@@ -82,7 +82,10 @@ const { ImageData } = storeToRefs(useStoreGallery())
             <div class="px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <HeroText
                     description="Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus A risus donec eget enim"
-                    header="About Us" title="Discover the Faces Behind Our Mental Health Consultancy">
+                    header="Conselor" title="Caring for Your Mental Health Get to Know Our Team of Experts">
+                    <Button
+                        class="px-6 py-2 text-sm font-bold text-center text-white transition-all rounded-lg md:px-12 md:py-3 font-secondary bg-primary-text-brown md:rounded-full hover:shadow-lg"
+                        title="See more" />
                 </HeroText>
                 <HeroImage :data="hero" />
             </div>

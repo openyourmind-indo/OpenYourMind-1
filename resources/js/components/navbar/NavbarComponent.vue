@@ -2,7 +2,9 @@
 <script setup>
 import { ref } from 'vue'
 import BrandLogo from 'public/Logo.svg'
+import { useRoute } from 'vue-router';
 const hamburger = ref(true);
+const route = useRoute().name
 </script>
 <template>
     <nav class="container start-0">
@@ -14,7 +16,10 @@ const hamburger = ref(true);
                 </span>
             </a>
             <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-                <Button />
+                <Button :class="{
+                    'max-[374px]:hidden px-2 md:px-6 py-2 text-sm font-medium font-secondary text-center text-black bg-card-white rounded-lg md:rounded-full hover:shadow-lg transition-all': route !== 'Home',
+                    'max-[374px]:hidden px-2 md:px-6 py-2 text-sm font-medium font-secondary text-center text-white bg-secondary-green rounded-lg md:rounded-full hover:shadow-lg transition-all': route === 'Home'
+                }" />
                 <button @click="hamburger = !hamburger" data-collapse-toggle="navbar-cta" type="button"
                     class="inline-flex items-center justify-center md:hidden text-primary-title "
                     aria-controls="navbar-cta" aria-expanded="false">

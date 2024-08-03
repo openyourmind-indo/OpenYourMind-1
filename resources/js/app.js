@@ -31,6 +31,7 @@ import CardArticle from './components/card/CardArticle.vue';
 import test from './components/card/test.vue';
 import CardTesti from './components/card/CardTesti.vue';
 import maps from './components/maps/maps.vue';
+import alert from './components/artikel/alert.vue';
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
 import CardPrice from './components/card/CardPrice.vue';
@@ -63,6 +64,7 @@ app.component("App", App)
     .component("test", test)
     .component("CardTestimonial", CardTesti)
     .component("MapsVue", maps)
+    .component("AlertVue", alert)
     .use(router)
     .use(createPinia())
     .mount("#app");
