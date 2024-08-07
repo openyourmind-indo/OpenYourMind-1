@@ -1,7 +1,7 @@
 // ? Import Tailwind Css
 import '../css/app.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap';
 // ? Define vue, pinia store
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -14,17 +14,16 @@ import App from '@/components/App.vue'
 import ButtonHamburger from '@/components/base/ButtonHamburger.vue';
 import Button from '@/components/base/ButtonComponent.vue';
 
-createApp(App)    
-.component('DefaultLayout', DefaultLayout)
-.component('NavbarComponent', NavbarComponent)
-.component('NavItem', NavItem)
-.component('ButtonHamburger', ButtonHamburger)
-.component('Button', Button)
-.use(router)
-.use(createPinia())
-.mount('#app')
+createApp(App)
+    .component('DefaultLayout', DefaultLayout)
+    .component('NavbarComponent', NavbarComponent)
+    .component('NavItem', NavItem)
+    .component('ButtonHamburger', ButtonHamburger)
+    .component('Button', Button)
+    .use(router)
+    .use(createPinia())
+    .mount('#app')
 
 
 
-    
-    
+

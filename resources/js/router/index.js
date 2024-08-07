@@ -5,7 +5,7 @@ export const routes = [
         path: '/admin/dashboard',
         name: 'adminDashboard',
         component: () => import('../views/AdminDashboard.vue'),
-        meta: { requiresAuth: true, role: 'admin' , title: "Admin dashboard" }
+        meta: { requiresAuth: true, role: 'admin', title: "Admin dashboard" }
     },
     {
         path: '/',
@@ -66,7 +66,7 @@ export const routes = [
             title: 'Home Page',
             role: 'user'
         }
-    },  {
+    }, {
         path: '/login',
         name: 'login',
         component: () => import('../views/LoginView.vue'),
@@ -82,7 +82,7 @@ export const routes = [
             title: 'Register Page'
         }
     },
-   
+
     {
         path: '/unauthorized',
         name: 'Unauthorized',
@@ -104,17 +104,17 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
     const token = localStorage.getItem('token');
     const userRole = localStorage.getItem('userRole');
-  
+
     if (requiresAuth && !token) {
-      next('/login');
+        next('/login');
     } else if (to.meta.role && to.meta.role !== userRole) {
-      next('/unauthorized');
+        next('/unauthorized');
     } else {
-      next();
+        next();
     }
-  });
-  
-  
+});
+
+
 
 //   router.beforeEach((to, from, next) => {
 //     const token = localStorage.getItem('token');
