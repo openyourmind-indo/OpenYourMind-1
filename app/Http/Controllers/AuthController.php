@@ -27,21 +27,32 @@ class AuthController extends Controller
                 return response()->json(['errors' => $validator->errors()], 422);
             }
     
+            // Create the user
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,
                 'birth_date' => $request->birth_date,
                 'password' => Hash::make($request->password),
-            ]); 
+            ]);
     
+            // Generate JWT token
             $token = JWTAuth::fromUser($user);
     
-            return response()->json(['message' => 'User registered successfully', 'token' => $token], 201);
+            // Get the user's role
+            $role = "user";
+    
+            // Define success message
+            $message = 'User registered successfully';
+    
+            // Return response with token, role, and success message
+            return response()->json(compact('token', 'role', 'message'), 201);
         } catch (\Exception $e) {
+            // Catch any errors and return a generic error message
             return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
         }
     }
+    
     
 
     
