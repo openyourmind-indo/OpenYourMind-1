@@ -33,9 +33,9 @@
   </div>
 </template>
 
-
-
 <script>
+import { register } from '../authService';
+
 export default {
   data() {
     return {
@@ -50,28 +50,23 @@ export default {
   methods: {
     async register() {
       try {
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: this.name,
-            email: this.email,
-            phone_number: this.phone_number,
-            birth_date: this.birth_date,
-            password: this.password,
-            password_confirmation: this.password_confirmation
-          })
+        const response = await register({
+          name: this.name,
+          email: this.email,
+          phone_number: this.phone_number,
+          birth_date: this.birth_date,
+          password: this.password,
+          password_confirmation: this.password_confirmation
         });
-        const data = await response.json();
-        console.log(data);
-        console.log(data.token);
-        if (!response.ok) {
-          throw new Error(data.errors ? JSON.stringify(data.errors) : data.error || 'Registration failed');
+        console.log("register berhasil tinggal membuat token")
+        if (!response.token) {
+          throw new Error(response.errors ? JSON.stringify(response.errors) : response.error || 'Registration failed');
         }
-
-        localStorage.setItem('token', data.token);
+        
+        console.log("membuat token");
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userRole', response.role);
+        console.log("token dan role berhasil dibuat, lanjut ke page home");
         this.$router.push({ name: 'home' });
       } catch (error) {
         console.error('Error registering:', error);
