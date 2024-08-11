@@ -38,7 +38,7 @@
 
 <script>
 import { register } from '../authService';
-
+import Api from '@/services/api';
 export default {
     data() {
         return {
@@ -53,23 +53,37 @@ export default {
     methods: {
         async register() {
             try {
-                const response = await register({
+                const response = await Api.post('/api/register', {
                     name: this.name,
                     email: this.email,
                     phone_number: this.phone_number,
                     birth_date: this.birth_date,
                     password: this.password,
                     password_confirmation: this.password_confirmation
-                });
+                })
+                // const response = await Api.post('/api/register'{
+                //     name: this.name,
+                //     email: this.email,
+                //     phone_number: this.phone_number,
+                //     birth_date: this.birth_date,
+                //     password: this.password,
+                //     password_confirmation: this.password_confirmation
+                // });
                 console.log("register berhasil tinggal membuat token")
-                if (!response.token) {
-                    throw new Error(response.errors ? JSON.stringify(response.errors) : response.error || 'Registration failed');
+                // if (!response.token) {
+                //     throw new Error(response.errors ? JSON.stringify(response.errors) : response.error || 'Registration failed');
+                // }
+                if (response.data.token) {
+                    localStorage.setItem('user', JSON.stringify({
+                        token: response.data.token,
+                        role: response.data.role
+                    }));
                 }
 
-                console.log("membuat token");
-                localStorage.setItem('token', response.token);
-                localStorage.setItem('userRole', response.role);
-                console.log("token dan role berhasil dibuat, lanjut ke page home");
+                // console.log("membuat token");
+                // localStorage.setItem('token', response.token);
+                // localStorage.setItem('userRole', response.role);
+                // console.log("token dan role berhasil dibuat, lanjut ke page home");
                 this.$router.push({ name: 'home' });
             } catch (error) {
                 console.error('Error registering:', error);

@@ -1,10 +1,10 @@
 <template>
     <div id="app">
-        <router-view v-if="loaded"></router-view>
+        <router-view></router-view>
     </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
     name: 'App',
     data() {
@@ -35,4 +35,4 @@ export default {
         }
     }
 };
-</script>
+</script> -->
