@@ -7,6 +7,8 @@
         "watch": "concurrently --kill-others \"npm run build\" \"npm run dev\""
     },
     "devDependencies": {
+        "@faker-js/faker": "^8.4.1",
+        "@iconify/vue": "^4.1.2",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
         "concurrently": "^8.2.2",
@@ -17,10 +19,10 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
-        "bootstrap": "^5.3.3",
+        "@vueuse/core": "^10.11.0",
+        "flowbite": "^2.3.0",
         "pinia": "^2.1.7",
-        "vue": "^3.4.30",
-        "vue-router": "^4.0.13",
-        "vuex": "^4.1.0"
+        "swiper": "^11.1.4",
+        "vue-router": "^4.3.2"
     }
 }
