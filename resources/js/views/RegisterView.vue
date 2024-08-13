@@ -1,95 +1,106 @@
-<template>
-    <div class="d-flex min-vh-100 align-items-center justify-content-center bg-light">
-        <div class="p-4 shadow-sm card w-100" style="max-width: 400px;">
-            <h2 class="mb-4 card-title">Register</h2>
-            <form @submit.prevent="register">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input v-model="name" type="text" class="form-control" id="name" placeholder="Name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input v-model="email" type="email" class="form-control" id="email" placeholder="Email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="phone_number" class="form-label">Phone Number</label>
-                    <input v-model="phone_number" type="text" class="form-control" id="phone_number"
-                        placeholder="Phone Number" required>
-                </div>
-                <div class="mb-3">
-                    <label for="birth_date" class="form-label">Birth Date</label>
-                    <input v-model="birth_date" type="date" class="form-control" id="birth_date" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input v-model="password" type="password" class="form-control" id="password" placeholder="Password"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm Password</label>
-                    <input v-model="password_confirmation" type="password" class="form-control"
-                        id="password_confirmation" placeholder="Confirm Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Register</button>
-            </form>
-        </div>
-    </div>
-</template>
+<script setup>
+import { useStoreAuth } from '@/store/auth/auth';
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import * as zod from 'zod';
 
-<script>
-import { register } from '../authService';
-import Api from '@/services/api';
-export default {
-    data() {
-        return {
-            name: '',
-            email: '',
-            phone_number: '',
-            birth_date: '',
-            password: '',
-            password_confirmation: ''
-        };
-    },
-    methods: {
-        async register() {
-            try {
-                const response = await Api.post('/api/register', {
-                    name: this.name,
-                    email: this.email,
-                    phone_number: this.phone_number,
-                    birth_date: this.birth_date,
-                    password: this.password,
-                    password_confirmation: this.password_confirmation
-                })
-                // const response = await Api.post('/api/register'{
-                //     name: this.name,
-                //     email: this.email,
-                //     phone_number: this.phone_number,
-                //     birth_date: this.birth_date,
-                //     password: this.password,
-                //     password_confirmation: this.password_confirmation
-                // });
-                console.log("register berhasil tinggal membuat token")
-                // if (!response.token) {
-                //     throw new Error(response.errors ? JSON.stringify(response.errors) : response.error || 'Registration failed');
-                // }
-                if (response.data.token) {
-                    localStorage.setItem('user', JSON.stringify({
-                        token: response.data.token,
-                        role: response.data.role
-                    }));
-                }
+const authStore = useStoreAuth()
 
-                // console.log("membuat token");
-                // localStorage.setItem('token', response.token);
-                // localStorage.setItem('userRole', response.role);
-                // console.log("token dan role berhasil dibuat, lanjut ke page home");
-                this.$router.push({ name: 'home' });
-            } catch (error) {
-                console.error('Error registering:', error);
-                alert(error.message);
-            }
-        }
-    }
-};
+const validationSchema = toTypedSchema(
+    zod.object({
+        name: zod.string()
+            .min(1, { message: 'This is required' })
+            .max(10, { message: 'The maximum name is 10 characters' }),
+        email: zod.string()
+            .min(1, { message: 'This is required' })
+            .email({ message: 'Must be a valid email' }),
+        phone_number: zod.string()
+            .min(12, { message: 'Minimal phone number is 12 length' })
+            .max(12, { message: 'Max phone number is 12 length' })
+            .regex(/^[0-9]+$/, { message: 'Must be a valid phone number' }),
+        birth_date: zod.string()
+            .min(1, { message: 'This is required' })
+            .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'Must be a valid date in YYYY-MM-DD format' }),
+        password: zod.string()
+            .min(1, { message: 'This is required' })
+            .min(8, { message: 'Too short' }),
+        password_confirmation: zod.string()
+            .min(1, { message: 'This is required' })
+            .min(8, { message: 'Too short' }),
+    })
+);
+
+const onSubmit = (values) => authStore.register(values)
 </script>
+
+<template>
+    <section class="grid h-screen place-items-center lg:grid-cols-2">
+        <figure class="hidden max-w-xs lg:block">
+            <img src="../../public/hero.svg" alt="hero">
+        </figure>
+        <Form class="max-w-xs mx-auto" :validation-schema="validationSchema" @submit="onSubmit">
+            <div class="flex flex-row items-center justify-center mb-1">
+                <div class="w-1/2 mb-5 mr-2">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your Name
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="name" type="text" />
+                    <ErrorMessage name="name" class="py-2 text-red-600" />
+                </div>
+                <div class="w-1/2 mb-5">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your Email
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="email" type="email" />
+                    <ErrorMessage name="email" class="py-2 text-red-600" />
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-center mb-1">
+                <div class="w-1/2 mb-5 mr-2">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your Phone
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="phone_number" type="text" />
+                    <ErrorMessage name="phone_number" class="py-2 text-red-600" />
+                </div>
+                <div class="w-1/2 mb-5">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your Birth date
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="birth_date" type="date" />
+                    <ErrorMessage name="birth_date" class="py-2 text-red-600" />
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-center mb-1">
+                <div class="w-1/2 mb-5 mr-2">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your password
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="password" type="password" />
+                    <ErrorMessage name="password" class="py-2 text-red-600" />
+                </div>
+                <div class="w-1/2 mb-5">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your password confirmation
+                    </label>
+                    <Field
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        name="password_confirmation" type="password" />
+                    <ErrorMessage name="password_confirmation" class="py-2 text-red-600" />
+                </div>
+            </div>
+            <button type="submit"
+                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </Form>
+    </section>
+</template>

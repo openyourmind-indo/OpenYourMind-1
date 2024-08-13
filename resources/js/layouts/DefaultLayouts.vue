@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 const router = useRoute().name !== 'Home'
 </script>
 <template>
-    <header :class="[router ? 'bg-primary-main' : 'bg-transparent']">
+    <header>
         <NavbarComponent />
     </header>
     <main :class="[router ? 'py-0' : 'py-2']">

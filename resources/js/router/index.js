@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import HomeView from 'views/Home/HomeView.vue'
 export const routes = [
     {
@@ -10,7 +9,6 @@ export const routes = [
     },
     {
         path: '/',
-        name: 'home',
         name: 'Home',
         component: HomeView,
         meta: {
@@ -21,8 +19,6 @@ export const routes = [
     },
     {
         path: '/about',
-        name: 'Tentang kami',
-        component: () => import('../views/AboutView.vue'),
         name: 'About',
         component: () => import('views/About/AboutView.vue'),
         meta: {
@@ -32,9 +28,6 @@ export const routes = [
         }
     },
     {
-        path: '/program',
-        name: 'Program',
-        component: () => import('../views/ProgramView.vue'),
         path: '/services',
         name: 'services',
         component: () => import('views/Services/ServicesView.vue'),
@@ -46,9 +39,6 @@ export const routes = [
     },
     {
         path: '/article',
-        name: 'Artikel',
-        component: () => import('../views/ArtikelView.vue'),
-        path: '/articel',
         name: 'Articel',
         component: () => import('views/Artikel/ArtikelView.vue'),
         meta: {
@@ -58,9 +48,16 @@ export const routes = [
         }
     },
     {
-        path: '/testimoni',
-        name: 'Testimoni',
-        component: () => import('../views/TestimoniView.vue'),
+        path: '/articke',
+        name: 'Artl',
+        component: () => import('views/ArtikelView.vuend'),
+        meta: {
+            requiresAuth: true,
+            title: 'Artikel Page',
+            role: 'user'
+        }
+    },
+    {
         path: '/articel/:id',
         name: 'ArticelDetails',
         component: () => import('views/Artikel/ArtikelDetail.vue'),
@@ -71,18 +68,9 @@ export const routes = [
         }
     },
     {
-        path: '/kontak',
-        name: 'Kontak',
-        component: HomeView,
-        meta: {
-            requiresAuth: true,
-            title: 'Home Page',
-            role: 'user'
-        }
-    }, {
         path: '/login',
         name: 'login',
-        component: () => import('../views/LoginView.vue'),
+        component: () => import('views/LoginView.vue'),
         meta: {
             title: 'Login Page'
         }
@@ -100,9 +88,6 @@ export const routes = [
         path: '/unauthorized',
         name: 'Unauthorized',
         component: () => import('../views/Unauthorized.vue')
-            title: 'Artikel Page'
-    },
-    props: route => ({ ...route.params, id: route.params.id }),
     },
     // ! Don't delete || will match everything and put it under `$route.params.pathMatch`
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: import('views/NotFound.vue') },
