@@ -1,33 +1,39 @@
 <!-- ? Sample Navbar Components -->
 <script setup>
 import { ref } from 'vue'
-const hamburger = ref(true)
+import BrandLogo from 'public/Logo.svg'
+import { useRoute } from 'vue-router';
+const hamburger = ref(true);
+const route = useRoute().name
 </script>
 <template>
-    <nav class="bg-white border-gray-200">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+    <nav class="container start-0">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto ">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="../../../public/Logo.svg" class="size-16" alt="Open your mind" />
+                <img :src="BrandLogo" class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-xl font-bold whitespace-nowrap text-primary-title font-secondary">
+                    Open Your Mind
+                </span>
             </a>
-            <div class="flex md:order-2">
-                <ButtonHamburger @hamburgerToggle="hamburger = !hamburger" />
-                <div class="relative hidden md:block">
-                    <!-- <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                        <span class="sr-only">Search icon</span>
-                    </div> -->
-                    <!-- <input type="text" id="search-navbar"
-                        class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search..."> -->
-                </div>
+            <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+                <Button :class="{
+                    'max-[374px]:hidden px-2 md:px-6 py-2 text-sm font-medium font-secondary text-center text-black bg-card-white rounded-lg md:rounded-full hover:shadow-lg transition-all': route !== 'Home',
+                    'max-[374px]:hidden px-2 md:px-6 py-2 text-sm font-medium font-secondary text-center text-white bg-secondary-green rounded-lg md:rounded-full hover:shadow-lg transition-all': route === 'Home'
+                }" />
+                <button @click="hamburger = !hamburger" data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center justify-center md:hidden text-primary-title "
+                    aria-controls="navbar-cta" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <IconVue v-if="hamburger" icon="charm:menu-hamburger" class="block size-5 md:hidden" />
+                    <IconVue v-else icon="line-md:close" class="size-5" />
+                </button>
             </div>
-            <div :class="[hamburger ? 'items-center justify-between hidden w-full md:flex md:w-auto md:order-1' : 'items-center justify-between block w-full md:flex md:w-auto md:order-1']"
-                id="navbar-search">
-                <NavItem :hamburger="hamburger" />
+            <div :class="{
+                ' items-center justify-between hidden w-full md:flex md:w-auto md:order-1': hamburger, 'items-center justify-between block z-50 absolute top-20 left-0 md:relative md:top-0 md:left-0 w-full md:flex md:w-auto md:order-1'
+                    :
+                    !hamburger
+            }" class="" id="navbar-cta">
+                <NavItem />
             </div>
         </div>
     </nav>

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('welcome');
 });
 
 Route::get('/about', function () {
@@ -15,7 +15,7 @@ Route::get('/services', function () {
     return view('services');
 });
 
-Route::get('/services/{serviceID}',function(){
+Route::get('/services/{serviceID}', function () {
     return view('login');
 });
 
@@ -42,10 +42,3 @@ Route::get('/pricing', function () {
 Route::get('/gallery', function () {
     return view('gallery');
 });
-
-
-
-
-
-
-

@@ -10,7 +10,7 @@
     @vite('resources/js/app.js')
 </head>
 
-<body id="app">
+<body id="app" class="bg-hero-main">
     <!-- <App /> -->
     <router-view></router-view>
 </body>

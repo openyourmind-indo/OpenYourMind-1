@@ -8,12 +8,19 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        vue()
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => tag.includes('swiper')
+                }
+            }
+        })
     ],
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
             '@': '/resources/js/',
+            'public': '/resources/public',
             'views': '/resources/js/views',
             // alias is'nt working when autocompletion
             'stores': '/resources/js/store',
