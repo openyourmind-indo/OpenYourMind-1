@@ -15,7 +15,7 @@ const { ImageData } = storeToRefs(useStoreGallery())
 <template>
     <DefaultLayout>
         <!-- Hero Section -->
-        <section class="container">
+        <section class="container pt-20">
             <div class="max-w-screen-xl px-4 mx-auto lg:grid lg:gap-0 xl:gap-0 lg:grid-cols-12">
                 <div class="mr-auto place-self-center lg:col-span-7">
                     <h1

@@ -5,10 +5,12 @@ import BrandLogo from 'public/Logo.svg'
 import { useRoute } from 'vue-router';
 const hamburger = ref(true);
 const route = useRoute().name
+const router = useRoute().name !== 'Home'
 </script>
 <template>
-    <nav class="container start-0">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto ">
+    <nav :class="[router ? 'bg-primary-main' : 'bg-slate-50']"
+        class="fixed top-0 z-20 w-full dark:bg-gray-900 start-0 dark:border-gray-600">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img :src="BrandLogo" class="h-8" alt="Flowbite Logo" />
                 <span class="self-center text-xl font-bold whitespace-nowrap text-primary-title font-secondary">
@@ -24,8 +26,7 @@ const route = useRoute().name
                     class="inline-flex items-center justify-center md:hidden text-primary-title "
                     aria-controls="navbar-cta" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <IconVue v-if="hamburger" icon="charm:menu-hamburger" class="block size-5 md:hidden" />
-                    <IconVue v-else icon="line-md:close" class="size-5" />
+                    <IconVue icon="charm:menu-hamburger" class="block size-5 md:hidden" />
                 </button>
             </div>
             <div :class="{
